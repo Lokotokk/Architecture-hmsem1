@@ -82,6 +82,8 @@ class lesson4.warriors.Archer {
 + String toString()
 }
 
+Battle "1" *-- "2" Warrior : owns >
+
 ' Melee наследует от Weapon
 lesson4.weapons.Weapon <|-- lesson4.weapons.meleeWeapon.Melee
 ' Axe реализует интерфейс Melee
