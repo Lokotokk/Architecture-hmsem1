@@ -1,0 +1,110 @@
+@startuml
+interface lesson4.weapons.meleeWeapon.Melee {
+}
+class lesson4.weapons.meleeWeapon.Axe {
++ int damage()
++ String toString()
+}
+class lesson4.Team {
+~ List<T> team
++ void add(T)
++ Iterator<T> iterator()
++ int getTeamHealth()
++ int maxAttackDistance()
++ int getTeamAttack()
++ int getMinTeamShield()
++ String toString()
+}
+interface lesson4.weapons.rangedWeapon.Ranged {
+~ int distance()
+}
+' Абстрактный класс Warrior с четрымя приватными полями и 10ю публичными методами
+abstract class lesson4.warriors.Warrior {
+- String name
+- int healthPoint
+- W weapon
+- S shield
++ String getName()
++ int getHealthPoint()
++ W getWeapon()
++ S getShield()
++ void setShield(S)
++ void setHealthPoint(int)
++ void setWeapon(W)
++ int hit()
++ void rediceHealth(int)
++ String toString()
+}
+class lesson4.weapons.rangedWeapon.Bow {
++ int damage()
++ int distance()
++ String toString()
+}
+
+
+class lesson4.shields.Heavy {
++ int damageReduction()
++ String toString()
+}
+class lesson4.warriors.Infantryman {
++ String toString()
+}
+class lesson4.weapons.meleeWeapon.Sword {
++ int damage()
++ String toString()
+}
+interface lesson4.weapons.Weapon {
+~ int damage()
+}
+'Класс с двумя приватными полями и одним публичным методом
+class lesson4.Battle {
+- Warrior w1
+- Warrior w2
++ void fight()
+}
+interface lesson4.shields.Shield {
+~ int damageReduction()
+}
+class lesson4.weapons.rangedWeapon.CrossBow {
++ int damage()
++ int distance()
++ String toString()
+}
+class lesson4.shields.Light {
++ int damageReduction()
++ String toString()
+}
+class lesson4.Main {
++ {static} void main(String[])
+}
+class lesson4.warriors.Archer {
++ int distance()
++ String toString()
+}
+
+' Melee наследует от Weapon
+lesson4.weapons.Weapon <|-- lesson4.weapons.meleeWeapon.Melee
+' Axe реализует интерфейс Melee
+lesson4.weapons.meleeWeapon.Melee <|.. lesson4.weapons.meleeWeapon.Axe
+' Team реализует интерфейс Iterable
+lesson4.Iterable <|.. lesson4.Team
+' Ranged наследует от Weapon
+lesson4.weapons.Weapon <|-- lesson4.weapons.rangedWeapon.Ranged
+' Bow реализует интерфейс Ranged
+lesson4.weapons.rangedWeapon.Ranged <|.. lesson4.weapons.rangedWeapon.Bow
+' Heavy реализует интерфейс Shield
+lesson4.shields.Shield <|.. lesson4.shields.Heavy
+' Infantryman наследует от Warrior
+lesson4.warriors.Warrior <|-- lesson4.warriors.Infantryman
+' Sword реализует интерфейс Melee
+lesson4.weapons.meleeWeapon.Melee <|.. lesson4.weapons.meleeWeapon.Sword
+' CrossBow реализует интерфейс Ranged
+lesson4.weapons.rangedWeapon.Ranged <|.. lesson4.weapons.rangedWeapon.CrossBow
+' Light реализует интерфейс Shield
+lesson4.shields.Shield <|.. lesson4.shields.Light
+' Archer наследует Warrior
+lesson4.warriors.Warrior <|-- lesson4.warriors.Archer
+' демонстрации зависимости (Dependency)
+Main ..> Team : uses >
+Main ..> Battle : uses >
+@enduml
